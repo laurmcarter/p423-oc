@@ -22,7 +22,7 @@ basePost = [ ("submit","Compile") , ("ioj","yes") , ("numpregs","2") , ("rvreg",
 
 ----- Old/New string pairs required to emulate MIME encoding
 bodyFormatting = [ (' ',"+"), ('\'',"%27"), ('\n',"+")
-                 , ('?',"%3F"), ('#',"%23"), ('=', "%3D")
+                 , ('?',"%3F"), ('#',"%23")
                  , ('!',"%21") , ('"',"%22") , ('$',"%24")
                  , ('(',"%28") , (')',"%29") , ('*',"%2A")
                  , ('+',"%2B") , (',',"%2C") , ('-',"%2D")
