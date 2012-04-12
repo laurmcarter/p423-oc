@@ -128,7 +128,7 @@ main = do
       (do let w = last args;
           home <- getEnv "HOME"
           -- read in authentication
-          auth <- liftM (dropWhileEnd isSpace) $ readFile (home ++ "/" ++ authFile)
+          auth <- liftM (Main.dropWhileEnd isSpace) $ readFile (home ++ "/" ++ authFile)
           -- prompt
           putStrLn "Code to compile: "
           -- read in code
@@ -198,3 +198,5 @@ assoc x l = case l of
   (p@(k,v):l') -> if' (k == x)
                       (Just p)
                       (assoc x l')
+
+dropWhileEnd f = reverse . dropWhile f . reverse
