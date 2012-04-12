@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# USAGE : ./oc <week-number> <code-file>
+
+# Put a snippet of code into a file, then specify the file when invoking
+# Put this in your P423 directory, so that petite can find your (compiler compile) library
+
+# You might also want to change the path to the p423-oc binary,
+# if it is not in the same directory as this file.
+
+week="$1"
+in_file="$2"
+mine_file="mine.out"
+theirs_file="theirs.out"
+
+echo -e "(import (compiler compile)) (new-cafe p423-step) `cat $in_file`\n" | petite -q | \
+  sed -e 's/\[/(/g' -e 's/\]/)/g' | tail -n +2 > "$mine_file"
+echo -e "`cat $in_file`\n" | ./p423-oc "$week" | tail -n +2 > "$theirs_file"
+
+vim -d "$mine_file" "$theirs_file"
