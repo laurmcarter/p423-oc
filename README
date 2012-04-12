@@ -1,0 +1,81 @@
+p423-oc
+A terminal interface for the P423 online compiler
+
+---------------
+
+Kyle Carter, April 2012
+
+---------------
+
+Building
+
+p423-oc depends upon the curl binary being in your path,
+as that is what it uses to interact with the p423 website.
+
+You can check that it is by invoking:
+
+$ which curl
+
+Curl should be available on IU's machines, and is easily obtainable
+as a package in most linux distributions.
+
+All that's left is to build the source into a nice little binary.
+
+While in the p423-oc source directory, invoke...
+
+$ make
+
+...and you should be good to go.
+
+---------------
+
+Usage
+
+./p423-oc OPTION* <week>
+
+Where OPTION is one of the following:
+-s <starting-pass>
+	define starting pass.
+-p <pass0>,<pass1>,...
+	define passes to trace. (Passes must be comma separated)
+-h
+	print this help.
+
+---------------
+
+Authorization
+
+p423-oc requires a username and passphrase to authenticate with
+the P423 website. To provide these, make a file in your home
+directory named '.p423-auth'. In the file, put your username
+and passphrase as follows:
+
+username:pass phrase goes here
+
+Keep it secret, keep it safe.
+
+---------------
+
+Entering Code
+
+The standard usage of p423-oc looks something like the following:
+
+./p423-oc 13
+
+Which then gives you the prompt:
+
+Code to compile:
+
+You may enter code on as many lines as you wish, signalling to
+p423-oc that the code is entered with an empty line.
+
+So, for example, typing at the prompt...
+
+> Code to compile:
+> (let ((x.1 '1))
+>   x.1)
+> 
+
+...will send the code off to the online compiler.
+
+Cheers.
